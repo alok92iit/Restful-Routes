@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Restful Routes</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="stylesheet" type="text/css" href="/app.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body>
+    <h1><center>Restful Routes</center></h1>
+    <center class="my-3"><a  href="/comments/new">Add New Comment</a></center>
+    <ul class="mx-auto">
+        <% for(let comment of comments){%>
+            <li>
+                <p class="fw-bold fs-5 text-capitalize"><%= comment.username %></p> 
+                <p><%= comment.message %> </p>
+                <a class="mx-2" href="/comments/<%= comment.id %>" >Show</a>
+                <a href="/comments/<%= comment.id %>/edit">Edit</a>
+                <form action ="/comments/<%=comment.id %>/?_method=DELETE" method="post">
+                    <button class="btn btn-primary btn-sm mt-2">DELETE</button>
+                </form>
+            </li>
+        <% } %>
+    </ul>
+</body>
+</html>
